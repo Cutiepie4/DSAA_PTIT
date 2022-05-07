@@ -5,10 +5,6 @@ string chuyen2to16(string s) {
     while (s.size() % 4 != 0) s.insert(s.begin(), '0');
 }
 
-void dfs() {
-
-}
-
 int main() {
     int n;
     cin >> n;
