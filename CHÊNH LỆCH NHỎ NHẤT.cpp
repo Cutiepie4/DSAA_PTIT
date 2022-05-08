@@ -22,16 +22,10 @@ Giải thích test ví dụ:
 #include <bits/stdc++.h>
 using namespace std;
 
-int cvt(string s) {
-    int res = 0;
-    for (auto i : s) res = res * 10 + i - '0';
-    return res;
-}
-
 int process(vector <string> v) {
     int res = 0;
     vector <int> tmp(v.size());
-    for (int i = 0; i < v.size(); i++) tmp[i] = cvt(v[i]);
+    for (int i = 0; i < v.size(); i++) tmp[i] = stoi(v[i]);
     for (int i = 0; i < tmp.size();i++) {
         for (int j = i + 1; j < tmp.size(); j++) {
             res = max(res, abs(tmp[i] - tmp[j]));
