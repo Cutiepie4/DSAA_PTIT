@@ -19,9 +19,7 @@ Input
 4 2
 
 Output
-
 2
-
 5
 */
 #include <bits/stdc++.h>
