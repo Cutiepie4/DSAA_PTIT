@@ -39,7 +39,6 @@ int Prim(int st = 1) {
                 S.erase(D[v]);
                 D[v].w = w;
                 S.insert(D[v]);
-                Prv[v] = u;
             }
         }
     }
