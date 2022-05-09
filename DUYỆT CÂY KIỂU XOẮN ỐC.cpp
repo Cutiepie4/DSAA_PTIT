@@ -45,7 +45,7 @@ void add_node(node*& root, int n) {
 void ziczac_order(node*& root) {
     stack <node*> st1, st2;
     st1.push(root);
-    
+
     while (st1.size() || st2.size()) {
         while (st1.size()) {
             node* X = st1.top();
