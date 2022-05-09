@@ -11,13 +11,9 @@ Với mỗi test, in ra đáp án tìm được trên một dòng theo modulo 10
 Ví dụ:
 
 Input
-
 2
-
 2 2
-
 4 2
-
 Output
 2
 5
