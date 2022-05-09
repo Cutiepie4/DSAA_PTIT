@@ -16,7 +16,7 @@ int Prim(int st = 1) {
     int ans = 0;
     set <node> S;
     vector <node> D(n + 1); // Data
-    vector <int> mark(n + 1); // đánh 
+    vector <int> mark(n + 1); // đánh dấu
 
     for (int i = 1; i <= n; i++) {
         D[i] = node(1e9, i);
