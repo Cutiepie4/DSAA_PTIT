@@ -25,7 +25,7 @@ string bin_to_hex(string s) {
         string tmp = s.substr(i, 4);
         ans += Hex[Pow(tmp) - 1];
     }
-    while (ans.front()) ans.erase(ans.begin());
+    while (ans.front() == '0') ans.erase(ans.begin());
     return ans;
 }
 
