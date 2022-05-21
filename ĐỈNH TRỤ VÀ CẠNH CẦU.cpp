@@ -8,11 +8,11 @@ mt M;
 vt mark;
 vector <pair <int, int>> edge;
 
-void dfs1(int x, int u, int v) {
+void dfs_cc(int x, int u, int v) {
     mark[x] = 0;
     for (auto i : M[x]) {
         if (mark[i] && ((x != u && x != v) || (i != u && i != v))) {
-            dfs1(i, u, v);
+            dfs_cc(i, u, v);
         }
     }
 }
@@ -44,7 +44,7 @@ int canhcau() {
         int cnt = 0;
         for (int j = 1; j <= n; j++) {
             if (mark[j]) {
-                dfs1(j, i.first, i.second);
+                dfs_cc(j, i.first, i.second);
                 cnt++;
             }
         }
@@ -74,7 +74,7 @@ void solution() {
         M[u].push_back(v);
         M[v].push_back(u);
     }
-    for (int i = 1; i <= n; i++) sort(M[i].begin(), M[i].end());
+    // for (int i = 1; i <= n; i++) sort(M[i].begin(), M[i].end());
     cnt_tplt = tplt();
     cout << dinhtru() << " " << canhcau();
 }
