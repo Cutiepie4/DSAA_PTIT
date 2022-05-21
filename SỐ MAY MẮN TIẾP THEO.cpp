@@ -14,7 +14,6 @@ using namespace std;
 #define ll long long
 
 vector <ll> Data;
-vector <ll> ::iterator it1, it2, it3;
 
 void init() {
     queue <string> Q;
@@ -37,21 +36,11 @@ void solution() {
     ll ans = 0;
     cin >> l >> r;
     init();
-    it1 = lower_bound(Data.begin(), Data.end(), l);
-    it2 = upper_bound(it1, Data.end(), r);
-    advance(it2, 1);
-    ll tmp = l;
-    for (it3 = it1; it3 != it2; it3++) {
-        if (*it3 <= r) {
-            ans += *it3 * (*it3 - tmp + 1);
-            tmp = *it3 + 1;
-        }
-        else {
-            ll x = *it3;
-            advance(it3, -1);
-            ans += x * (r - *it3);
-            break;
-        }
+    auto it = lower_bound(Data.begin(), Data.end(), l);
+    for (int i = l; i <= r;) {
+        ans += (*it - i + 1) * *it;
+        i = *it + 1;
+        it++;
     }
     cout << ans;
 }
