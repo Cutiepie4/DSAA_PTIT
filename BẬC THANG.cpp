@@ -21,7 +21,7 @@ Output
 #include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
-const ll oo = 1e9 + 7;
+const int oo = 1e9 + 7;
 
 ll count_ways(int n, int k) {
     vector <ll> dp(n + 1, 0);
