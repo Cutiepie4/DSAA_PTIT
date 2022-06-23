@@ -23,39 +23,37 @@ OUTPUT
 #include <bits/stdc++.h>
 using namespace std;
 
-int process(vector <int>& v, int n, int k) {
-    int kt = 1, i;
-    for (i = k; i > 0; i--) {
+int n, k;
+
+void next_combination(vector <int>& v) {
+    for (int i = k; i > 0; i--) {
         if (v[i] < n - k + i) {
             v[i]++;
-            kt = 0; break;
+            for (int j = i + 1; j <= k; j++) {
+                v[j] = v[i] + j - i;
+            }
+            return;
         }
     }
-    if (kt) return 0;
-    for (int j = i + 1; j <= k; j++) {
-        v[j] = v[i] + j - i;
-    }
-    return 1;
+    for (int i = 1; i <= k; i++) v[i] = i;
+    return;
+}
+
+void solution() {
+    cin >> n >> k;
+    vector <int> v(k + 1);
+    for (int i = 1; i <= k; i++) cin >> v[i];
+    next_combination(v);
+    for (int i = 1; i <= k; i++) cout << v[i] << " ";
 }
 
 int main() {
+    ios_base::sync_with_stdio(0);
+    cin.tie(0), cout.tie(0);
     int t;
     cin >> t;
     while (t--) {
-        int n, k;
-        cin >> n >> k;
-        vector <int> v(k + 1);
-        v.push_back(0);
-        for (int i = 1; i <= k; i++) cin >> v[i];
-        if (process(v, n, k)) {
-            for (int i = 1; i <= k; i++) cout << v[i] << " ";
-            cout << endl;
-        }
-        else {
-            for (int i = 1; i <= k; i++) {
-                cout << i << " ";
-            }
-            cout << endl;
-        }
+        solution();
+        cout << endl;
     }
 }

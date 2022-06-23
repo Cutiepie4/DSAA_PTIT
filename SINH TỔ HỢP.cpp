@@ -12,26 +12,38 @@ Output
 */
 #include <bits/stdc++.h>
 using namespace std;
-int n, k, a[100];
-void in() {
-    for (int i = 1; i <= k; i++) cout << a[i];
+
+int n, k;
+vector <int> v;
+
+void next_combination(vector <int>& v) {
+    for (int i = 1; i <= k; i++) cout << v[i];
     cout << " ";
-}
-void sinhth(int i) {
-    for (int j = a[i - 1] + 1; j <= n - k + i; j++) {
-        a[i] = j;
-        if (i == k) in();
-        else sinhth(i + 1);
+    for (int i = k; i > 0; i--) {
+        if (v[i] < n - k + i) {
+            v[i]++;
+            for (int j = i + 1; j <= k; j++) {
+                v[j] = v[i] + j - i;
+            }
+            next_combination(v);
+        }
     }
 }
 
+void solution() {
+    cin >> n >> k;
+    v = vector <int>(k + 1);
+    for (int i = 1; i <= k; i++) v[i] = i;
+    next_combination(v);
+}
+
 int main() {
+    ios_base::sync_with_stdio(0);
+    cin.tie(0), cout.tie(0);
     int t;
     cin >> t;
     while (t--) {
-        cin >> n >> k;
-        sinhth(1);
+        solution();
         cout << endl;
     }
-    return 0;
 }
