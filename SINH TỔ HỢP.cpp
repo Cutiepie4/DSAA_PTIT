@@ -26,6 +26,7 @@ void next_combination(vector <int>& v) {
                 v[j] = v[i] + j - i;
             }
             next_combination(v);
+            return;
         }
     }
 }
