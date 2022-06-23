@@ -22,52 +22,31 @@ Output
 */
 #include <bits/stdc++.h>
 using namespace std;
-#define ll long long
-#define faster() ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
-#define vt vector <int>
-#define vtl vector <ll>
-#define vts vector <string>
-#define pi pair <int,int>
-#define matrix vector <vt>
-#define matrixl vector <vtl>
-const int MOD = 1e9 + 7;
 
 int n, k;
-vts S;
+vector <string> Data[17][17];
 
-void back(string s, int cnt, int i) {
-    if (cnt == k) {
-        S.push_back(s);
-        return;
-    }
-    if (i == s.size()) {
-        return;
-    }
-
-    if (cnt < k) {
-        s[i] = '1';
-        back(s, cnt + 1, i + 1);
-        s[i] = '0';
-        back(s, cnt, i + 1);
+void back(int cnt, string s) {
+    if (s.size() < 17) Data[s.size()][cnt].push_back(s);
+    if (s.size() + 1 < 17) {
+        back(cnt, s + '0');
+        back(cnt + 1, s + '1');
     }
 }
 
 void solution() {
-    S.clear();
     cin >> n >> k;
-    string s;
-    for (int i = 0; i < n; i++) s += "0";
-    back(s, 0, 0);
-    sort(S.begin(), S.end());
-    for (auto i : S) cout << i << endl;
+    for (auto i : Data[n][k]) cout << i << endl;
 }
 
 int main() {
-    faster();
+    ios_base::sync_with_stdio(0);
+    cin.tie(0), cout.tie(0);
+    back(0, "");
     int t;
     cin >> t;
     while (t--) {
         solution();
+        // cout << endl;
     }
-    return 0;
 }
