@@ -46,8 +46,6 @@ long long tich_lon_nhat(long long min1, long long min2, long long min3, long lon
     return max(temp1, temp2);
 }
 
-
-
 int main() {
     long long t;
     cin >> t;
